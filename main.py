@@ -34,9 +34,24 @@ response = requests.get(
 data = response.json()
 song = random.choice(data['tracks'])
 p_url_exists = False
-print(song['name'] + " by " + names[artist_id]) 
+
+
+song_title = song['name']
+artist_name = names[artist_id]
+preview_url = ''
 if isinstance(song['preview_url'], str):
-    print("Preview url: " + song['preview_url'])
+    preview_url = song['preview_url']
     p_url_exists = True
-print("Song img src: " + song['album']['images'][0]['url'])
+    
+song_img_src = song['album']['images'][0]['url']
+
+app = Flask(__name__)
+@app.route('/')
+def song_info():
+     return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src)
+app.run(
+    port=int(os.getenv('PORT', 8080)),
+    host=os.getenv('IP', '0.0.0.0'),
+    debug=True
+    )
 
