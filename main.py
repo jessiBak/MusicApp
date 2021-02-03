@@ -34,3 +34,4 @@ response = requests.get(
 data = response.json()
 song = random.choice(data['tracks'])
 print(song['name'] + " by " + names[artist_id]) 
+print("Preview url: " + song['preview_url'])
