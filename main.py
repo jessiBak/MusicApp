@@ -33,5 +33,10 @@ response = requests.get(
 
 data = response.json()
 song = random.choice(data['tracks'])
+p_url_exists = False
 print(song['name'] + " by " + names[artist_id]) 
-print("Preview url: " + song['preview_url'])
+if isinstance(song['preview_url'], str):
+    print("Preview url: " + song['preview_url'])
+    p_url_exists = True
+print("Song img src: " + song['album']['images'][0]['url'])
+
