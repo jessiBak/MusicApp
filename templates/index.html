@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <link rel="stylesheet" href={{ url_for('static', filename='style.css')}} type="text/css"/>
+    </head>
+    <body>
+        <h2>{{song_title}}</h2>
+        <h3>By {{artist_name}}</h3>
+        <img src={{song_img_src}}/>
+        <h4>Image src url: {{song_img_src}}</h4>
+        {% if p_url_exists == False %}
+            <h3>Song preview unavailable :(</h3>
+        {% else %}
+            <audio controls>
+                <source src={{preview_url}} type="audio/mp3">
+            </audio>
+        {% endif %}
+    </body>
+</html>
