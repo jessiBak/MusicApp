@@ -49,6 +49,7 @@ app = Flask(__name__)
 @app.route('/')
 def song_info():
      return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src)
+     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.run(
     port=int(os.getenv('PORT', 8080)),
     host=os.getenv('IP', '0.0.0.0'),
