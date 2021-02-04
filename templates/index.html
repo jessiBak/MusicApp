@@ -5,8 +5,7 @@
     <body>
         <h2>{{song_title}}</h2>
         <h3>By {{artist_name}}</h3>
-        <img src={{song_img_src}}/>
-        <h4>Image src url: {{song_img_src}}</h4>
+        <img src={{song_img_src}} /> <!--To make img appear, put a space between }} and /> -->
         {% if p_url_exists == False %}
             <h3>Song preview unavailable :(</h3>
         {% else %}
