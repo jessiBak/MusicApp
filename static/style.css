@@ -7,7 +7,16 @@ body
 {
     text-align: center; /*so h2 and h3 elements are cented*/
     padding: 75px; /*so text starts 75px down instead of at the top*/
-    
+}
+
+h2
+{
+    color: #3A43F7;
+}
+
+h3
+{
+    color: #6a71ff;
 }
 
 img
