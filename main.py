@@ -9,8 +9,9 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
 
-auth_url = "https://accounts.spotify.com/api/token"
 
+#Getting authorization token
+auth_url = "https://accounts.spotify.com/api/token"
 auth_response = requests.post(auth_url,{
     'grant_type': 'client_credentials',
     'client_id': os.getenv('SPOTIFTY_ID'),
@@ -20,10 +21,11 @@ auth_response_data = auth_response.json()
 access_token = auth_response_data['access_token']
 
 
-#url = "https://api.spotify.com/v1/browse/new-releases?country=US&limit=10"
 artists = ["1hNaHKp2Za5YdOAG0WnRbc", "4Ns55iOSe1Im2WU2e1Eym0", "6vWDO969PvNqNYHIOW5v0m"]
 names = {"1hNaHKp2Za5YdOAG0WnRbc": "Tiwa Savage", "4Ns55iOSe1Im2WU2e1Eym0": "Simi", "6vWDO969PvNqNYHIOW5v0m": "Beyonce"}
-artist_id = artists[random.randint(0,2)]
+
+artist_id = artists[random.randint(0,2)] #choose 1 of the 3 artists randomly
+
 url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks?country=US"
 headers = {'Authorization': 'Bearer {token}'.format(token=access_token)}
 response = requests.get(
@@ -32,10 +34,9 @@ response = requests.get(
 )
 
 data = response.json()
-song = random.choice(data['tracks'])
+song = random.choice(data['tracks']) #Choose a random song from the list of artist's most popular songs
+
 p_url_exists = False
-
-
 song_title = song['name']
 artist_name = names[artist_id]
 preview_url = ''
@@ -50,7 +51,7 @@ app = Flask(__name__)
 def song_info():
      return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src)
 
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #So style.css refreshes
 app.run(
     port=int(os.getenv('PORT', 8080)),
     host=os.getenv('IP', '0.0.0.0'),
