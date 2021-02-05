@@ -4,11 +4,7 @@ import os
 import random
 from dotenv import load_dotenv, find_dotenv
 
-
-
-
 load_dotenv(find_dotenv())
-
 
 #Getting authorization token
 auth_url = "https://accounts.spotify.com/api/token"
