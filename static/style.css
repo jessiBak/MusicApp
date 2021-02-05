@@ -5,7 +5,7 @@ body
 
 .music_info
 {
-    text-align: center; /*so h2 and h3 elements are cented*/
+    text-align: center; /*so h2 and h3 elements are centered*/
     padding: 75px; /*so text starts 75px down instead of at the top*/
 }
 

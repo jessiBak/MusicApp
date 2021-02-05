@@ -17,6 +17,7 @@ auth_response_data = auth_response.json()
 access_token = auth_response_data['access_token']
 
 
+#Getting a song
 artists = ["1hNaHKp2Za5YdOAG0WnRbc", "4Ns55iOSe1Im2WU2e1Eym0", "6vWDO969PvNqNYHIOW5v0m"]
 names = {"1hNaHKp2Za5YdOAG0WnRbc": "Tiwa Savage", "4Ns55iOSe1Im2WU2e1Eym0": "Simi", "6vWDO969PvNqNYHIOW5v0m": "Beyonce"}
 
@@ -41,11 +42,35 @@ if isinstance(song['preview_url'], str):
     p_url_exists = True
     
 song_img_src = song['album']['images'][0]['url']
+song_id = song['id']
 
+#Getting additional song info:
+url2 = f"https://api.spotify.com/v1/audio-features?ids={song_id}"
+response = requests.get(
+    url2,
+    headers=headers
+)
+
+song_info_data = response.json()
+tempo = str(song_info_data['audio_features'][0]['tempo'])
+
+
+#Getting artist picture:
+url3 = f"https://api.spotify.com/v1/artists/{artist_id}"
+response = requests.get(
+    url3,
+    headers=headers
+)
+
+artist_info = response.json()
+artist_img_src = artist_info['images'][0]['url']
+
+
+#Using Flask to pass variables to html
 app = Flask(__name__)
 @app.route('/')
 def song_info():
-     return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src)
+     return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src, artist_img_src = artist_img_src, tempo = tempo)
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #So style.css refreshes
 app.run(
@@ -53,4 +78,3 @@ app.run(
     host=os.getenv('IP', '0.0.0.0'),
     debug=True
     )
-
