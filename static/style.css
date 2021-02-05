@@ -1,14 +1,33 @@
+
 body
 {
-    background-color: #7acdfa; /*I like blue :) might change this color tho*/
+    background-color: #6F76FF;
+}
+
+.flex-container
+{
+    display: flex;
+}
+
+.flex-child
+{
+    flex: 1;
 }
 
 .music_info
 {
     text-align: center; /*so h2 and h3 elements are centered*/
     padding: 75px; /*so text starts 75px down instead of at the top*/
+    background-color: #7acdfa;
+    background-size: contain;
 }
 
+.artist
+{
+    background-color: #12326D;
+    background-size: contain;
+    padding: 155px;
+}
 h2
 {
     color: #3A43F7;
@@ -27,6 +46,11 @@ img
     margin-right: auto;
     display: block;      /*block so that the img and audio elements cant be next to each other, block
                          -> whitespace above and below element w no elements side by side*/
+}
+
+#round
+{
+    border-radius: 50%;
 }
 
 audio
