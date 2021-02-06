@@ -4,6 +4,7 @@ body
     background-color: #6F76FF;
 }
 
+
 .flex-container  /*flexbox to make artist img and music info be side by side*/
 {
     display: flex;
@@ -18,24 +19,25 @@ body
 .music_info
 {
     text-align: center; /*so h2 and h3 elements are centered*/
-    /*padding: 75px; /*so text starts 75px down instead of at the top*/
     background-color: #7acdfa;
     background-size: contain;
     margin: auto;
     width: 540px;
     height: 540px;
+    padding-top: 80px;
 }
 
 .artist
 {
     background-color: #12326D;
     background-size: contain;
-   /* padding: 75px;*/
     margin: auto;
     width: 540px;
     height: 540px;
-    align-items: center;
+    align-items: center; /*so img is centered*/
+    padding-top: 80px;
 }
+
 h2
 {
     color: #3A43F7;
@@ -48,14 +50,11 @@ h3
 
 img
 {
-    display: block;
+    display: block; /*block so that the img and audio elements cant be next to each other, block-> whitespace above and below element w no elements side by side*/
     margin: auto;
     width: 300px;
     height: 300px;
-    /*margin-left: auto;   /*combining margin-left and margin right auto centers the element*/
-    /*margin-right: auto;
-    display: block;      /*block so that the img and audio elements cant be next to each other, block
-                         -> whitespace above and below element w no elements side by side*/
+      
 }
 
 audio
