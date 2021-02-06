@@ -12,21 +12,29 @@ body
 .flex-child
 {
     flex: 1;
+    margin: auto;
 }
 
 .music_info
 {
     text-align: center; /*so h2 and h3 elements are centered*/
-    padding: 75px; /*so text starts 75px down instead of at the top*/
+    /*padding: 75px; /*so text starts 75px down instead of at the top*/
     background-color: #7acdfa;
     background-size: contain;
+    margin: auto;
+    width: 540px;
+    height: 540px;
 }
 
 .artist
 {
     background-color: #12326D;
     background-size: contain;
-    padding: 155px;
+   /* padding: 75px;*/
+    margin: auto;
+    width: 540px;
+    height: 540px;
+    align-items: center;
 }
 h2
 {
@@ -40,10 +48,12 @@ h3
 
 img
 {
+    display: block;
+    margin: auto;
     width: 300px;
     height: 300px;
-    margin-left: auto;   /*combining margin-left and margin right auto centers the element*/
-    margin-right: auto;
+    /*margin-left: auto;   /*combining margin-left and margin right auto centers the element*/
+    /*margin-right: auto;
     display: block;      /*block so that the img and audio elements cant be next to each other, block
                          -> whitespace above and below element w no elements side by side*/
 }
