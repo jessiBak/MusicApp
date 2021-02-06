@@ -52,8 +52,9 @@ response = requests.get(
 )
 
 song_info_data = response.json()
-tempo = str(song_info_data['audio_features'][0]['tempo'])
+tempo = song_info_data['audio_features'][0]['tempo']
 
+beat_length = str(60/tempo)
 
 #Getting artist picture:
 url3 = f"https://api.spotify.com/v1/artists/{artist_id}"
@@ -70,7 +71,7 @@ artist_img_src = artist_info['images'][0]['url']
 app = Flask(__name__)
 @app.route('/')
 def song_info():
-     return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src, artist_img_src = artist_img_src, tempo = tempo)
+     return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src, artist_img_src = artist_img_src, beat_length = beat_length)
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #So style.css refreshes
 app.run(

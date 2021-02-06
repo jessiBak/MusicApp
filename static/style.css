@@ -4,7 +4,7 @@ body
     background-color: #6F76FF;
 }
 
-.flex-container
+.flex-container  /*flexbox to make artist img and music info be side by side*/
 {
     display: flex;
 }
@@ -48,14 +48,45 @@ img
                          -> whitespace above and below element w no elements side by side*/
 }
 
-#round
-{
-    border-radius: 50%;
-}
-
 audio
 {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+
+@-webkit-keyframes "pulse" /*webkit so animation can run on a chrome browser*/
+{
+    0% 
+    {
+        -webkit-transform: scale(1.1);
+    }
+            
+    50% 
+    {
+        -webkit-transform: scale(0.8);
+    }
+            
+    100% 
+    {
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes "pulse" /*so other browsers can run the animation*/
+{
+    0% 
+    {
+        transform: scale(1.1);
+    }
+            
+    50% 
+    {
+        transform: scale(0.8);
+    }
+            
+    100% 
+    {
+        transform: scale(1);
+    }
 }
