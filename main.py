@@ -18,8 +18,8 @@ access_token = auth_response_data['access_token']
 
 
 #Getting a song
-artists = ["1hNaHKp2Za5YdOAG0WnRbc", "4Ns55iOSe1Im2WU2e1Eym0", "6vWDO969PvNqNYHIOW5v0m"]
-names = {"1hNaHKp2Za5YdOAG0WnRbc": "Tiwa Savage", "4Ns55iOSe1Im2WU2e1Eym0": "Simi", "6vWDO969PvNqNYHIOW5v0m": "Beyonce"}
+artists = ['1hNaHKp2Za5YdOAG0WnRbc', '4Ns55iOSe1Im2WU2e1Eym0', '6vWDO969PvNqNYHIOW5v0m']
+names = {'1hNaHKp2Za5YdOAG0WnRbc': 'Tiwa Savage', '4Ns55iOSe1Im2WU2e1Eym0': 'Simi', '6vWDO969PvNqNYHIOW5v0m': 'Beyonce'}
 
 artist_id = artists[random.randint(0,2)] #choose 1 of the 3 artists randomly
 
@@ -45,7 +45,7 @@ song_img_src = song['album']['images'][0]['url']
 song_id = song['id']
 
 #Getting additional song info:
-url2 = f"https://api.spotify.com/v1/audio-features?ids={song_id}"
+url2 = f'https://api.spotify.com/v1/audio-features?ids={song_id}'
 response = requests.get(
     url2,
     headers=headers
@@ -54,7 +54,7 @@ response = requests.get(
 song_info_data = response.json()
 tempo = song_info_data['audio_features'][0]['tempo']
 
-beat_length = str(60/tempo)
+beat_length = str(60/tempo) #to calculate the length of 1 beat in the song in seconds
 
 #Getting artist picture:
 url3 = f"https://api.spotify.com/v1/artists/{artist_id}"
