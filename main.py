@@ -42,19 +42,21 @@ if isinstance(song['preview_url'], str):
     p_url_exists = True
     
 song_img_src = song['album']['images'][0]['url']
-song_id = song['id']
 
 #Getting additional song info:
-url2 = f'https://api.spotify.com/v1/audio-features?ids={song_id}'
-response = requests.get(
-    url2,
-    headers=headers
-)
-
-song_info_data = response.json()
-tempo = song_info_data['audio_features'][0]['tempo']
-
-beat_length = str(60/tempo) #to calculate the length of 1 beat in the song in seconds
+if(p_url_exists):
+    song_id = song['id']
+    url2 = f'https://api.spotify.com/v1/audio-features?ids={song_id}'
+    response = requests.get(
+        url2,
+        headers=headers
+    )
+    if(response.json()):
+        song_info_data = response.json()
+        tempo = song_info_data['audio_features'][0]['tempo']
+        beat_length = str(60/tempo) #to calculate the length of 1 beat in the song in seconds
+else:
+    beat_length = 0
 
 #Getting artist picture:
 url3 = f"https://api.spotify.com/v1/artists/{artist_id}"
