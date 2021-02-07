@@ -20,14 +20,14 @@ export SPOTIFY_SECRET="YOUR_SECRET_KEY_HERE"
 
 ## Technical Issues Encountered
 1. Originally, all the song-related images would appear to be broken, even when clicking the src url would display the image properly in a new tab.
-⋅⋅* I was able to fix this by comparing the official Flask documentation's syntax of getting variable values in an html file with my own.
-⋅⋅* I realized that instead of `<img src={{song_img_src}}/>`, I should have used `<img src={{song_img_src}} />`.
+*  I was able to fix this by comparing the official Flask documentation's syntax of getting variable values in an html file with my own.
+* I realized that instead of `<img src={{song_img_src}}/>`, I should have used `<img src={{song_img_src}} />`.
 2. Initially, the Song title and artist name texts and the song-related image weren't aligned with each other
-⋅⋅* I looked up how to align elements with CSS using this website (https://www.geeksforgeeks.org/css-centering-elements/)
-⋅⋅** Using that information, I was able to vertically align the headers, image, and song preview audio elements
+* I looked up how to align elements with CSS using this website (https://www.geeksforgeeks.org/css-centering-elements/)
+* Using that information, I was able to vertically align the headers, image, and song preview audio elements
 3. There would occasionally the app would be unable to be accessed through a browser.
-⋅⋅* After looking at the Spotify documentation, I noticed that not every song would have a preview url. Whenever the preview url was null, a runtime error would occur.
-⋅⋅* This meant that I had to add a conditional statement to account for null preview urls by displaying a message indicating the preview was unavailable.
+* After looking at the Spotify documentation, I noticed that not every song would have a preview url. Whenever the preview url was null, a runtime error would occur.
+* This meant that I had to add a conditional statement to account for null preview urls by displaying a message indicating the preview was unavailable.
 
 ## Additional Features
 * I'm considering displaying 3 random songs from an artist in a carousel style using CSS animations
