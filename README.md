@@ -9,7 +9,8 @@
 ## Setup
 1. Create .env file in main directory
 2. Add Spotify keys with the lines:
-```export SPOTIFTY_ID="YOUR_CLIENT_ID_HERE" 
+```
+export SPOTIFTY_ID="YOUR_CLIENT_ID_HERE" 
 export SPOTIFY_SECRET="YOUR_SECRET_KEY_HERE"
 ```
    
