@@ -36,6 +36,7 @@ body
     height: 540px;
     align-items: center; /*so img is centered*/
     padding-top: 80px;
+    text-align: center;
 }
 
 h2
@@ -98,4 +99,14 @@ audio
     {
         transform: scale(1);
     }
+}
+
+button
+{
+    background-color: #73B3BB;
+    color: white;
+    font-size: 16px;
+    border-radius: 15px;
+    margin: auto;
+    
 }
