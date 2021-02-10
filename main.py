@@ -3,10 +3,11 @@ import requests
 import os
 import random
 from dotenv import load_dotenv, find_dotenv
+from urllib.parse import quote
 
 load_dotenv(find_dotenv())
 
-#Getting authorization token
+#Getting Spotify authorization token:
 auth_url = "https://accounts.spotify.com/api/token"
 auth_response = requests.post(auth_url,{
     'grant_type': 'client_credentials',
@@ -17,9 +18,9 @@ auth_response_data = auth_response.json()
 access_token = auth_response_data['access_token']
 
 
-#Getting a song
+#Getting a song with Spotify API:
 artists = ['1hNaHKp2Za5YdOAG0WnRbc', '4Ns55iOSe1Im2WU2e1Eym0', '6vWDO969PvNqNYHIOW5v0m']
-names = {'1hNaHKp2Za5YdOAG0WnRbc': 'Tiwa Savage', '4Ns55iOSe1Im2WU2e1Eym0': 'Simi', '6vWDO969PvNqNYHIOW5v0m': 'Beyonce'}
+names = {'1hNaHKp2Za5YdOAG0WnRbc': 'Tiwa Savage', '4Ns55iOSe1Im2WU2e1Eym0': 'Simi', '6vWDO969PvNqNYHIOW5v0m': 'Beyonce'} #artists to add: Niniola, Teni, Burna Boy, Yemi Alade, Flavour
 
 artist_id = artists[random.randint(0,2)] #choose 1 of the 3 artists randomly
 
@@ -69,11 +70,22 @@ artist_info = response.json()
 artist_img_src = artist_info['images'][0]['url']
 
 
-#Using Flask to pass variables to html
+#Using Genius API for lyrics:
+song_search = quote(f"{song_title} by {artist_name}") #quote() serializes the string so it cn be used in the search query
+genius_url = f"https://api.genius.com/search?q={song_search}"
+lyrics_response = requests.get(
+    genius_url,
+    headers={'Authorization': 'Bearer {token}'.format(token=os.getenv('GENIUS_ACCESS_TOKEN'))}
+)
+
+lyrics_data = lyrics_response.json()
+lyrics_url = lyrics_data['response']['hits'][0]['result']['url']
+
+#Using Flask to pass variables to html:
 app = Flask(__name__)
 @app.route('/')
 def song_info():
-     return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src, artist_img_src = artist_img_src, beat_length = beat_length)
+     return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, song_img_src = song_img_src, artist_img_src = artist_img_src, beat_length = beat_length, lyrics_url = lyrics_url)
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 #So style.css refreshes
 app.run(
