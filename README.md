@@ -5,19 +5,22 @@
 * `pip install requests`
 * `pip install python-dotenv`
 * Spotify Client ID and Secret keys (Follow instructions at https://developer.spotify.com/documentation/web-api/quick-start/ to get them)
+* Genius Access Token (Follow instructions at https://docs.genius.com/#/getting-started-h1 to get it)
 
 ## Setup
 1. Create .env file in main directory
-2. Add Spotify keys with the lines:
+2. Add Spotify keys and Genius access token with the lines:
 ```
 export SPOTIFTY_ID="YOUR_CLIENT_ID_HERE" 
 export SPOTIFY_SECRET="YOUR_SECRET_KEY_HERE"
+export GENIUS_ACCESS_TOKEN="YOUR_ACCESS_TOKEN_HERE"
 ```
    
 ## Running the Application
 1. Run this command in the terminal: `python main.py`
 2. See one of an artist's most popular songs and listen to a preview, if available.
 3. An image of the artist will pulse to the beat of the preview song!
+4. You can also search for an artist by name and see a random song from that artist's top tracks.
 
 ## Technical Issues Encountered
 1. Originally, all the song-related images would appear to be broken, even when clicking the src url would display the image properly in a new tab.
@@ -38,6 +41,7 @@ export SPOTIFY_SECRET="YOUR_SECRET_KEY_HERE"
 * I'm considering displaying 3 random songs from an artist in a carousel style using CSS animations
 * I'd also like to have the user see a link to the artist's Spotify page if they hover over the artist's picture. I'd likely need some JavaScript functions for that.
 * I'd also like to improve the artist image pulse animation with more CSS animations
+
 * One known issue is that if a user searches for a new song with available lyrics, the link to the lyrics would open in a new window before the rest of the page loads.
 * Additionally, clicking the lyrics button would not do anything after this occurs.
 * This most likely has something to do with how I replaced the lyrics link url with JavaScript.
