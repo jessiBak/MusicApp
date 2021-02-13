@@ -19,10 +19,10 @@ access_token = auth_response_data['access_token']
 
 
 #Getting a song with Spotify API:
-artists = ['1hNaHKp2Za5YdOAG0WnRbc', '4Ns55iOSe1Im2WU2e1Eym0', '6vWDO969PvNqNYHIOW5v0m']
-names = {'1hNaHKp2Za5YdOAG0WnRbc': 'Tiwa Savage', '4Ns55iOSe1Im2WU2e1Eym0': 'Simi', '6vWDO969PvNqNYHIOW5v0m': 'Beyonce'} #artists to add: Niniola, Teni, Burna Boy, Yemi Alade, Flavour
+artists = ['1hNaHKp2Za5YdOAG0WnRbc', '4Ns55iOSe1Im2WU2e1Eym0', '6vWDO969PvNqNYHIOW5v0m', '5MEHQvTW53C0ccsuxdZobQ', '3ukrG1BmfEiuo0KDj8YTTS', '7fKO99ryLDo8VocdtVvwZW']
+names = {'1hNaHKp2Za5YdOAG0WnRbc': 'Tiwa Savage', '4Ns55iOSe1Im2WU2e1Eym0': 'Simi', '6vWDO969PvNqNYHIOW5v0m': 'Beyonce', '5MEHQvTW53C0ccsuxdZobQ': 'Niniola', '3ukrG1BmfEiuo0KDj8YTTS': 'Teni', '7fKO99ryLDo8VocdtVvwZW': 'Yemi Alade'}
 
-artist_id = artists[random.randint(0,2)] #choose 1 of the 3 artists randomly
+artist_id = artists[random.randint(0,5)] #choose 1 of the 6 artists randomly
 
 url = f"https://api.spotify.com/v1/artists/{artist_id}/top-tracks?country=US"
 headers = {'Authorization': 'Bearer {token}'.format(token=access_token)}

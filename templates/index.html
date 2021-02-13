@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href={{ url_for('static', filename='style.css') }} type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Courgette">
     </head>
     <style>
         .round
@@ -18,13 +19,13 @@
                 <br>
                 <br>
                 <br>
-                <br>
                 <img src={{ artist_img_src }} class="round" />
                 <br>
                 <br>
                 <br>
                 <button type="button" onclick=" window.open('{{ lyrics_url }}','_blank')">Click here for the lyrics!</button>
             </div>
+            <div class="flex-child background_img">
             <div class="flex-child music_info">
                 <h2>{{ song_title }}</h2>
                 <h3>By {{ artist_name }}</h3>
@@ -37,6 +38,7 @@
                         <source src={{ preview_url }} type="audio/mp3">
                     </audio>
                 {% endif %}
+            </div>
             </div>
         </div>
     </body>

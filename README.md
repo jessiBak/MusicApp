@@ -29,6 +29,10 @@ export SPOTIFY_SECRET="YOUR_SECRET_KEY_HERE"
 3. There would occasionally the app would be unable to be accessed through a browser.
 * After looking at the Spotify documentation, I noticed that not every song would have a preview url. Whenever the preview url was null, a runtime error would occur.
 * This meant that I had to add a conditional statement to account for null preview urls by displaying a message indicating the preview was unavailable.
+4. I wanted to apply a filter to a background image I used for the music_info div, but when using a filter applied to all the elements within the div.
+* This answer from StackOverflow was extremely helpful: https://stackoverflow.com/questions/58207753/how-do-i-apply-a-css-filter-to-only-the-background-image
+* This website helped me calculate the filter I needed based on the color: https://codepen.io/sosuke/pen/Pjoqqp
+* After wrapping the music_info into another div meant to hold the background image, I was able to apply the filter using the code in the StackOverflow answer as a basis.
 
 ## Additional Features
 * I'm considering displaying 3 random songs from an artist in a carousel style using CSS animations
