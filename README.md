@@ -34,7 +34,10 @@ export SPOTIFY_SECRET="YOUR_SECRET_KEY_HERE"
 * This website helped me calculate the filter I needed based on the color: https://codepen.io/sosuke/pen/Pjoqqp
 * After wrapping the music_info into another div meant to hold the background image, I was able to apply the filter using the code in the StackOverflow answer as a basis.
 
-## Additional Features
+## Additional Features and Known Issues
 * I'm considering displaying 3 random songs from an artist in a carousel style using CSS animations
 * I'd also like to have the user see a link to the artist's Spotify page if they hover over the artist's picture. I'd likely need some JavaScript functions for that.
 * I'd also like to improve the artist image pulse animation with more CSS animations
+* One known issue is that if a user searches for a new song with available lyrics, the link to the lyrics would open in a new window before the rest of the page loads.
+* Additionally, clicking the lyrics button would not do anything after this occurs.
+* This most likely has something to do with how I replaced the lyrics link url with JavaScript.
