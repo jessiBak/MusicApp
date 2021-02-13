@@ -91,52 +91,54 @@ def get_lyrics(song_title, artist_name):
     return ''
 
     
-access_token = get_auth_token()
-    
-#default values:
-p_url_exists = False
-preview_url = ''
-l_url_exists = False
-lyrics_url = ''
 
-artists = ['1hNaHKp2Za5YdOAG0WnRbc', '4Ns55iOSe1Im2WU2e1Eym0', '6vWDO969PvNqNYHIOW5v0m', '5MEHQvTW53C0ccsuxdZobQ', '3ukrG1BmfEiuo0KDj8YTTS', '7fKO99ryLDo8VocdtVvwZW']
-names = {'1hNaHKp2Za5YdOAG0WnRbc': 'Tiwa Savage', '4Ns55iOSe1Im2WU2e1Eym0': 'Simi', '6vWDO969PvNqNYHIOW5v0m': 'Beyonce', '5MEHQvTW53C0ccsuxdZobQ': 'Niniola', '3ukrG1BmfEiuo0KDj8YTTS': 'Teni', '7fKO99ryLDo8VocdtVvwZW': 'Yemi Alade'}
-
-
-artist_id = artists[random.randint(0,5)] #choose 1 of the 6 artists randomly
-artist_name = names[artist_id]
-
-song = get_random_track(artist_id)
-if song == '':
-    song_title = 'Oh no! :('
-    song_img_src = 'https://www.clipartkey.com/mpngs/m/36-364563_crying-sad-emoji-png-sad-face-emoji-transparent.png'
-    preview_url = ''
-    artist_name = "Not an Actual Artist..."
-    lyrics_url = ''
-
-song_title = song['name']
-song_img_src = song['album']['images'][0]['url']
-artist_img_src = get_artist_img(artist_id)
-
-if isinstance(song['preview_url'], str):
-    preview_url = song['preview_url']
-    p_url_exists = True
-       
-if p_url_exists and song != '':
-    song_id = song['id']
-    beat_length = get_beat_length(song_id)
-    lyrics_url = get_lyrics(song_title, artist_name)
-    if len(lyrics_url) > 0:
-        l_url_exists = True
-else:
-    beat_length = '1.5'
 
 
 #Using Flask to pass variables to html:
 app = Flask(__name__)
 @app.route('/')
 def song_info():
-     return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, p_url_exists = p_url_exists, song_img_src = song_img_src, artist_img_src = artist_img_src, beat_length = beat_length, lyrics_url = lyrics_url, l_url_exists = l_url_exists)
+    access_token = get_auth_token()
+    
+    #default values:
+    p_url_exists = False
+    preview_url = ''
+    l_url_exists = False
+    lyrics_url = ''
+
+    artists = ['1hNaHKp2Za5YdOAG0WnRbc', '4Ns55iOSe1Im2WU2e1Eym0', '6vWDO969PvNqNYHIOW5v0m', '5MEHQvTW53C0ccsuxdZobQ', '3ukrG1BmfEiuo0KDj8YTTS', '7fKO99ryLDo8VocdtVvwZW']
+    names = {'1hNaHKp2Za5YdOAG0WnRbc': 'Tiwa Savage', '4Ns55iOSe1Im2WU2e1Eym0': 'Simi', '6vWDO969PvNqNYHIOW5v0m': 'Beyonce', '5MEHQvTW53C0ccsuxdZobQ': 'Niniola', '3ukrG1BmfEiuo0KDj8YTTS': 'Teni', '7fKO99ryLDo8VocdtVvwZW': 'Yemi Alade'}
+
+
+    artist_id = artists[random.randint(0,5)] #choose 1 of the 6 artists randomly
+    artist_name = names[artist_id]
+
+    song = get_random_track(artist_id)
+    if song == '':
+        song_title = 'Oh no! :('
+        song_img_src = 'https://www.clipartkey.com/mpngs/m/36-364563_crying-sad-emoji-png-sad-face-emoji-transparent.png'
+        preview_url = ''
+        artist_name = "Not an Actual Artist..."
+        lyrics_url = ''
+
+    song_title = song['name']
+    song_img_src = song['album']['images'][0]['url']
+    artist_img_src = get_artist_img(artist_id)
+
+    if isinstance(song['preview_url'], str):
+        preview_url = song['preview_url']
+        p_url_exists = True
+       
+    if p_url_exists and song != '':
+        song_id = song['id']
+        beat_length = get_beat_length(song_id)
+        lyrics_url = get_lyrics(song_title, artist_name)
+        if len(lyrics_url) > 0:
+            l_url_exists = True
+    else:
+        beat_length = '1.5'
+        
+    return render_template('index.html', song_title = song_title, artist_name = artist_name, preview_url = preview_url, p_url_exists = p_url_exists, song_img_src = song_img_src, artist_img_src = artist_img_src, beat_length = beat_length, lyrics_url = lyrics_url, l_url_exists = l_url_exists)
 
 @app.route('/search/<name>')
 def search(name):
