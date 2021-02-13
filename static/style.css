@@ -136,5 +136,9 @@ button
     font-size: 25px;
     border-radius: 10px;
     margin: auto;
-    
+}
+
+#submit
+{
+    font-size: 15px;
 }
