@@ -1,4 +1,6 @@
-# Project 1
+# Project 1: A Music Discovery App!
+
+See it deployed here: https://secret-chamber-08624.herokuapp.com/ 
 
 ## Requirements
 * `pip install flask`
@@ -29,7 +31,7 @@ export GENIUS_ACCESS_TOKEN="YOUR_ACCESS_TOKEN_HERE"
 2. Initially, the Song title and artist name texts and the song-related image weren't aligned with each other
 * I looked up how to align elements with CSS using this website (https://www.geeksforgeeks.org/css-centering-elements/)
 * Using that information, I was able to vertically align the headers, image, and song preview audio elements
-3. There would occasionally the app would be unable to be accessed through a browser.
+3. Occasionally the app would be unable to be accessed through a browser.
 * After looking at the Spotify documentation, I noticed that not every song would have a preview url. Whenever the preview url was null, a runtime error would occur.
 * This meant that I had to add a conditional statement to account for null preview urls by displaying a message indicating the preview was unavailable.
 4. I wanted to apply a filter to a background image I used for the music_info div, but when using a filter applied to all the elements within the div.
@@ -38,8 +40,9 @@ export GENIUS_ACCESS_TOKEN="YOUR_ACCESS_TOKEN_HERE"
 * After wrapping the music_info into another div meant to hold the background image, I was able to apply the filter using the code in the StackOverflow answer as a basis.
 
 ## Additional Features and Known Issues
-* I'm considering displaying 3 random songs from an artist in a carousel style using CSS animations
-* I'd also like to have the user see a link to the artist's Spotify page if they hover over the artist's picture. I'd likely need some JavaScript functions for that.
+* I'd like to display 3 random songs from an artist in a carousel style using CSS animations and/or JavaScript
+* This resource seems like it would be helpful in learning how to do this with just CSS: https://speckyboy.com/open-source-carousel-sliders-css/
+* I'd also like to have the user see a link to the artist's Spotify page if they hover over the artist's picture. I'd likely need some JavaScript functions and on hover attributes for that.
 * I'd also like to improve the artist image pulse animation with more CSS animations
 
 * One known issue is that if a user searches for a new song with available lyrics, the link to the lyrics would open in a new window before the rest of the page loads.
