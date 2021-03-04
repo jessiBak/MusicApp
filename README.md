@@ -13,7 +13,7 @@ See it deployed here: https://secret-chamber-08624.herokuapp.com/
 1. Create .env file in main directory
 2. Add Spotify keys and Genius access token with the lines:
 ```
-export SPOTIFTY_ID="YOUR_CLIENT_ID_HERE" 
+export SPOTIFY_ID="YOUR_CLIENT_ID_HERE" 
 export SPOTIFY_SECRET="YOUR_SECRET_KEY_HERE"
 export GENIUS_ACCESS_TOKEN="YOUR_ACCESS_TOKEN_HERE"
 ```
